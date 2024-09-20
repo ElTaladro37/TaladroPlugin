@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
 }
 
 group = 'edu.taladro'
@@ -12,8 +14,40 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.diffplug.spotless:spotless-plugin-gradle:6.21.0'
 }
 
 test {
     useJUnitPlatform()
 }
+
+gradlePlugin {
+    plugins {
+        taladro {
+            id = 'el-taladro-plugin'
+            implementationClass = 'edu.taladro.TaladroPlugin'
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'edu.taladro'
+            artifactId = 'el-taladro-plugin'
+            version = '1.0.0-SNAPSHOT'
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ElTaladro37/TaladroPlugin")
+            credentials {
+                username = project.findProperty("github.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("github.token") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
+
