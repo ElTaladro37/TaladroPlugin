@@ -31,14 +31,6 @@ gradlePlugin {
 }
 
 publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'edu.taladro'
-            artifactId = "${project.name}"
-            version = '1.0.0-SNAPSHOT'
-            from components.java
-        }
-    }
     repositories {
         maven {
             name = "GitHubPackages"
