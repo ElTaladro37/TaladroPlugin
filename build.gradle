@@ -24,7 +24,7 @@ test {
 gradlePlugin {
     plugins {
         taladro {
-            id = 'el-taladro-plugin'
+            id = 'edu.taladro.el-taladro-plugin'
             implementationClass = 'edu.taladro.TaladroPlugin'
         }
     }
