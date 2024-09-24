@@ -24,21 +24,13 @@ test {
 gradlePlugin {
     plugins {
         taladro {
-            id = 'el-taladro-plugin'
+            id = 'edu.taladro.el-taladro-plugin'
             implementationClass = 'edu.taladro.TaladroPlugin'
         }
     }
 }
 
 publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'edu.taladro'
-            artifactId = "${project.name}"
-            version = '1.0.0-SNAPSHOT'
-            from components.java
-        }
-    }
     repositories {
         maven {
             name = "GitHubPackages"
