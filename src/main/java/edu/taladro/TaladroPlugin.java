@@ -53,6 +53,8 @@ public class TaladroPlugin implements Plugin<Project> {
             });
         });
 
+        project.getTasks().named("check").configure(task -> task.dependsOn(verificationTask));
+
 
     }
 
