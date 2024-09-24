@@ -85,6 +85,8 @@ public class TaladroPlugin implements Plugin<Project> {
                 format.target("**/*.java");
                 format.targetExclude("**/build*/**");
                 format.googleJavaFormat();
+                format.indentWithTabs(2);
+                format.indentWithSpaces(4);
             });
         });
     }
