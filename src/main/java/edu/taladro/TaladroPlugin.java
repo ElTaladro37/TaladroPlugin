@@ -82,12 +82,9 @@ public class TaladroPlugin implements Plugin<Project> {
         project.getPluginManager().apply("com.diffplug.spotless");
         project.getExtensions().configure(SpotlessExtension.class, spotless -> {
             spotless.java(format -> {
-                format.googleJavaFormat();
                 format.target("**/*.java");
                 format.targetExclude("**/build*/**");
-                format.trimTrailingWhitespace();
-                format.indentWithTabs();
-                format.endWithNewline();
+                format.googleJavaFormat();
             });
         });
     }
